@@ -1,38 +1,47 @@
-const tasks = [
-	'buy milk',
-	'eat dinner',
-	'nail javascript',
-	'give feedback',
-];
+const tasks = ["buy milk", "eat dinner", "nail javascript", "give feedback"];
+const todoList = document.querySelector("#todo-list");
+const todoForm = document.querySelector("#todo-form");
+const todoFormSubmit = document.querySelector("#todo-form-button");
 
-// Append existing tasks in list
-for (let task of tasks) {
-	const existingTodo = document.createElement("li");
-	existingTodo.textContent = task;
-	document.querySelector('#todo-list').appendChild(existingTodo);
+// New Todo template
+const createTodo = function(task) {
+  const listRow = document.createElement("li");
+  const checkBox = document.createElement("button");
+  const taskName = document.createElement("span");
+  const delbutton = document.createElement("button");
+
+  taskName.textContent = task;
+  listRow.className = "todo";
+  checkBox.className = "unchecked";
+  delbutton.className = "delbutton";
+
+  listRow.appendChild(checkBox);
+  listRow.appendChild(taskName);
+  listRow.appendChild(delbutton);
+  document.querySelector("#todo-list").appendChild(listRow);
+};
+
+// New Todo via form
+const newTodo = function(event) {
+	if (
+		todoForm.value.trim() !== "" &&
+		(event.type == "click" || event.key === "Enter")
+	) {
+		tasks.push(todoForm.value);
+		createTodo(todoForm.value);
+		todoForm.value = "";
+	}
 }
 
-// Toggle Done
-const todoList = document.querySelector('#todo-list');
-todoList.addEventListener('click', (event) => event.target.classList.toggle('done'));
+tasks.forEach(createTodo);
+todoFormSubmit.addEventListener("click", newTodo);
+todoForm.addEventListener("keydown", newTodo);
 
-// Add Todo via form
-const todoForm = document.querySelector('#todo-form');
-const todoFormSubmit = document.querySelector('#todo-form-button');
-
-todoFormSubmit.addEventListener('click', () => {
-	const newTodo = document.createElement("li");
-	newTodo.textContent = todoForm.value;
-	document.querySelector('#todo-list').appendChild(newTodo);
+// Toggle done
+const todo = document.querySelectorAll(".todo");
+todo.forEach(row => {
+	row.addEventListener("click", event => {
+		event.currentTarget.children[0].classList.toggle('checked');
+		event.currentTarget.classList.toggle("done");
+	});
 });
-
-// Listen for 'Enter' key to submit form
-todoForm.addEventListener('keydown', (event) => {
-	if (event.key === 'Enter' && todoForm.value.trim() !== '') { // Prevents whitespace entries
-		const newTodo = document.createElement("li");
-		newTodo.textContent = todoForm.value;
-		document.querySelector('#todo-list').appendChild(newTodo);
-		todoForm.value = ''; // Resets form
-	}
-});
-
