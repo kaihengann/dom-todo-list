@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(255, 213, 173);
+  background-color: rgb(253, 229, 196);
   font-family: "Nunito Sans", sans-serif;
   font-size: 1rem;
   width: 100%;
@@ -64,7 +64,7 @@ div {
 }
 
 #todo-form::placeholder {
-  color: rgba(182, 182, 182, 0.35);
+  color: rgba(182, 182, 182, 0.45);
   font-family: "Nunito Sans", sans-serif;
 }
 #todo-form:hover::placeholder {
@@ -79,14 +79,15 @@ div {
   height: 90px;
   border: none;
   padding: 0;
+  opacity: 0.6;
   background: none;
   background-position: center center;
   background-size: 100% 100%;
   background-image: url(http://pngimages.net/sites/default/files/add-button-png-image-77680.png);
+  transition: opacity 0.3s ease-in-out;
 }
-
-#del-button {
-  background-image: url(https://img.icons8.com/ios/50/000000/unchecked-checkbox-filled.png);
+#todo-form-button:hover {
+  opacity: 1;
 }
 
 button {
@@ -111,11 +112,16 @@ button {
 }
 
 .delbutton {
-  position: relative;
-  align-self: right;
-  opacity: 0.8;
+  float: right;
+  opacity: 0;
   background-image: url(https://img.icons8.com/windows/32/000000/trash.png);
 }
+ul li:hover > .delbutton {
+  opacity: 0.5;
+  cursor: pointer;
+  transition: all 0.4s ease 0s;
+}
+
 .done {
   text-decoration: line-through;
   color: rgba(182, 182, 182, 0.5);

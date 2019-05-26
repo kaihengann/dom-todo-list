@@ -4,7 +4,7 @@ const todoForm = document.querySelector("#todo-form");
 const todoFormSubmit = document.querySelector("#todo-form-button");
 
 // New Todo template
-const createTodo = function(task) {
+const createTodo = task => {
   const listRow = document.createElement("li");
   const checkBox = document.createElement("button");
   const taskName = document.createElement("span");
@@ -22,7 +22,7 @@ const createTodo = function(task) {
 };
 
 // New Todo via form
-const newTodo = function(event) {
+const newTodo = event => {
 	if (
 		todoForm.value.trim() !== "" &&
 		(event.type == "click" || event.key === "Enter")
@@ -36,6 +36,20 @@ const newTodo = function(event) {
 tasks.forEach(createTodo);
 todoFormSubmit.addEventListener("click", newTodo);
 todoForm.addEventListener("keydown", newTodo);
+
+
+// Delete task
+const delbutton = document.querySelectorAll(".delbutton");
+delbutton.forEach(row => {
+	row.addEventListener("click", event => {
+		// for (i = 0; i < tasks.length; i++) {
+		// 	if (tasks[i] === event.target.previousSibling.textContent) {
+		// 		tasks.splice(i);
+		// 		console.log(tasks);
+		// 	}
+		event.target.parentNode.remove();
+		});
+});
 
 // Toggle done
 const todo = document.querySelectorAll(".todo");
