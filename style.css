@@ -1,19 +1,102 @@
 body {
-	border: 1px dotted tomato;
-	box-sizing: border-box;
-	border-width: 0 1px;
-	font-family: sans-serif;
-	font-size: 2rem;
-	margin: 0 auto;
-	max-width: 700px;
-	min-height: 100vh;
-	padding: 4rem;
+  background-color: #fafafa;
+  box-sizing: border-box;
+  border-width: 0 1px;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1rem;
+  margin: 0 auto;
+  max-width: 700px;
+  min-height: 100vh;
+  padding: 4rem;
+}
+
+h1 {
+  text-align: center;
+  padding: 1rem 0;
+  margin: 0;
+  text-transform: uppercase;
+  color: white;
+  background-color: #75cdd8;
 }
 
 ul {
-	padding: 0;
+  text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 ul li {
-	padding: 1rem 0;
+  padding: 0.5rem 1rem;
+  list-style-type: none;
+  text-align: left;
+  font-size: 18px;
+}
+
+ul li::first-letter {
+  text-transform: capitalize;
+}
+
+ul li:nth-child(odd) {
+  background: #f7f7f7;
+}
+
+div {
+  text-align: center;
+}
+
+.container {
+  background-color: white;
+  border-radius: 10px;
+  align-content: stretch;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.form {
+  height: 100px;
+}
+
+#todo-form {
+  display: inline;
+  width: 100%;
+  margin: 0;
+  padding: 0.5rem 1rem;
+  font-size: 18px;
+  font-weight: 100;
+  border: none;
+  background-color: #f7f7f7;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+#todo-form::placeholder {
+  color: rgba(182, 182, 182, 0.3);
+  font-family: "Nunito Sans", sans-serif;
+}
+#todo-form:focus::placeholder {
+  color: rgba(182, 182, 182, 0.8);
+  font-family: "Nunito Sans", sans-serif;
+}
+
+#todo-form-button {
+  position: relative;
+  bottom: 15px;
+  width: 90px;
+  height: 90px;
+  border: none;
+  padding: 0;
+  background: none;
+  background-position: center center;
+  background-size: 100% 100%;
+  background-image: url(http://pngimages.net/sites/default/files/add-button-png-image-77680.png);
+}
+
+:active,
+:focus {
+  outline: 0;
+}
+
+.done {
+  text-decoration: line-through;
+  color: rgba(182, 182, 182, 0.5);
 }
